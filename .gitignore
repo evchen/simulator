@@ -1,3 +1,9 @@
+#folder should be ignored
+nonsens/
+serial_test/
+ccsds_telemetry/
+ccsds_telecommand/
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
