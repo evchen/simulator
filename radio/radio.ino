@@ -3,7 +3,7 @@ extern "C" {
   #include "debug2.h"
   #include "I2Cslave.h"
   #include "SlaveDefinitions.h"
-  #include "crc_com.h"
+  #include "crc.h"
   #include "kiss.h"
   }
 
