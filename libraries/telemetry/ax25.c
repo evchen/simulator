@@ -57,7 +57,7 @@ uint8_t addAX25Frame (uint8_t *ax25Buffer, uint8_t *ax25BufferSize, uint8_t *tel
 	// Time flag 4bits (no time = 0000)
 	// Spare 2 bits = 00
 	// TC Count 2 bits 
-	ax25Buffer[packetLength -1] = count % 4;			// No idea if this works
+	ax25Buffer[packetLength -1] = 0;			// No idea if this works
 
 	*ax25BufferSize = packetLength;
 

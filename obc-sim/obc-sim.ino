@@ -8,7 +8,7 @@ extern "C"{
   #include "I2C_configuration.h"
   #include "ccsds.h"
   #include "ax25.h"
-  #include "crc_com.h"
+  #include "crc.h"
 }
 
 
