@@ -67,13 +67,13 @@ void addCallsign_withoutflag(uint8_t *ax25_packet, uint32_t* ax25_packet_length,
   uint16_t chk;
 
   // calculating the length of ax25 packet
-  *ax25_packet_length = data_length + 7 + 7 + 1 + 1 + 2 ;
+  *ax25_packet_length = data_length + 7 + 7 + 1 + 1  ;
   
   for (i = 0; i < CALLSIGN_LENGTH - 1 ; i ++ ){
         addData(ax25_packet, &offset, DEFAULT_CALLSIGN_TRXVU[i]<<1);
   }
   
-  addData(ax25_packet, &offset, 0x60);
+  addData(ax25_packet, &offset, 0xE0);
   
   // add source callsign
   for (i = 0; i < CALLSIGN_LENGTH - 1 ; i ++ ){
@@ -89,7 +89,7 @@ void addCallsign_withoutflag(uint8_t *ax25_packet, uint32_t* ax25_packet_length,
   for ( i = 0 ; i < data_length ; i ++ ){
     addData(ax25_packet, &offset, data[i]);
   }
-
+/*
   chk = 0xFFFF;
   // adding CRC
   for (i = 0; i < *ax25_packet_length - 3; i++) {
@@ -97,6 +97,6 @@ void addCallsign_withoutflag(uint8_t *ax25_packet, uint32_t* ax25_packet_length,
   }
   addData(ax25_packet, &offset,(uint8_t)(chk >> 8) );
   addData(ax25_packet, &offset,(uint8_t)(chk) );
-  
+ */ 
   
 }
