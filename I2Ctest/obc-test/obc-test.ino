@@ -4,10 +4,7 @@
 extern "C"{
   #include "I2C.h"
   #include "I2C_configuration.h"
-  #include "ccsds.h"
-  #include "ax25.h"
-  #include "crc.h"
-  #include "trxvu_sim_lib.h"
+
  
 }
 
@@ -23,7 +20,7 @@ void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
   I2C_start(I2C_BIT_RATE, I2C_TIMEOUT_RATE);
-  InitLTBL();
+  //InitLTBL();
   Serial.println("started!");
   Serial.flush();
 }
@@ -43,7 +40,7 @@ void loop() {
   else{
     Serial.print("No errors");
   }
-/*
+
   uint8_t data[1];
   error = I2C_read(0x08, data, 1 );
   if(error){

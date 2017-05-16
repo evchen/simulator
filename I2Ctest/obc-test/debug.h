@@ -23,7 +23,7 @@
 
 #ifdef ENABLE_DEBUG
 /* Uncomment this to disable debug throughout the program. */
-  //#undef ENABLE_DEBUG
+  #undef ENABLE_DEBUG
 #endif
 
 /* Re-enable debug in a file if enforced */
