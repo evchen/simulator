@@ -13,7 +13,7 @@
 
 
 typedef struct _queue_element{
-    uint8_t  data_length;
+    uint32_t  data_length;
     uint8_t* data;
     struct _queue_element* next_element;
 }Element;
@@ -37,7 +37,7 @@ void queue_init(Queue* q);
  * 0 no error
  * -1 nothing to dequeue
  */
-int dequeue(Queue* q, uint8_t** data, uint8_t* data_length );
+int dequeue(Queue* q, uint8_t** data, uint32_t* data_length );
 
 
 /*!
@@ -47,7 +47,7 @@ int dequeue(Queue* q, uint8_t** data, uint8_t* data_length );
  * @param data_length length of the data that needs to be stored
  * @note this function will not always succeed. might encournter that there is nothing to dequeue
  */
-void enqueue(Queue* q, uint8_t* data, uint8_t data_length);
+void enqueue(Queue* q, uint8_t* data, uint32_t data_length);
 
 void getAvailableFrameCount(Queue* q, int* availableFrameCount);
 

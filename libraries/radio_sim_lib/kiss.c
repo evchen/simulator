@@ -38,7 +38,6 @@ void kiss_encode(uint8_t* kiss_packet, uint32_t* packet_length, uint8_t* data, u
 	for ( i = 0 ; i < data_length ; i ++){		
 		put_byte(kiss_packet, packet_length, data[i]);
 	}
-	kiss_packet[(*packet_length)++] = 0x00;
 	
 	kiss_packet[(*packet_length)++] = FEND;
 	

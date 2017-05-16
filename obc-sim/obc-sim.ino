@@ -9,6 +9,7 @@ extern "C"{
   #include "ccsds.h"
   #include "ax25.h"
   #include "crc.h"
+  #include "trxvu_sim_lib.h"
 }
 
 
@@ -31,7 +32,7 @@ void loop() {
   //I2C_write(0x08, data, 2);
   
   sendHKdata();
-  delay(5000);
+
 }
 
 void sendHKdata(){
@@ -69,12 +70,24 @@ void sendHKdata(){
     
   }
   
+  uint8_t available;
 
-  I2C_write(0x08, ax25_packet, ax25_packet_length);
-  Serial.println();
-  Serial.flush();
+  //I2C_write(0x08, ax25_packet, ax25_packet_length);
+  error = SimTrxvu_tcSendAX25DefClSign(0x08, ax25_packet, ax25_packet_length, &available);
 
+  if(error){
+    Serial.print("Error occurred during sending: ");
+    Serial.print(error);
+    Serial.println();
+    Serial.flush();
+    delay(30000);
+  }
   
+  if(available == 0){
+    Serial.println("full buffer");
+    delay(5000);    
+  }
+    
   
 }
 

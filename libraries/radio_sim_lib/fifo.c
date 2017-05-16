@@ -15,7 +15,7 @@ void queue_init( Queue* q){
 
 
 
- int dequeue(Queue* q, uint8_t** data, uint8_t* data_length){
+ int dequeue(Queue* q, uint8_t** data, uint32_t* data_length){
 
      if((q-> size) < 1) return -1;
     
@@ -41,7 +41,7 @@ void queue_init( Queue* q){
      
 }
  
- void enqueue(Queue* q, uint8_t* data, uint8_t data_length){
+ void enqueue(Queue* q, uint8_t* data, uint32_t data_length){
      
      Element* new = malloc(sizeof(Element));
      new -> data_length = data_length;
