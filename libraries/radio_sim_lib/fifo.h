@@ -25,7 +25,7 @@ typedef struct _fifo_Q{
 }Queue;
 
 
-void queue_init(Queue* q);
+int queue_init(Queue* q);
 
 /*!
  * Dequeue the first Element of the Queue. 

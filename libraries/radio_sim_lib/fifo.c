@@ -41,7 +41,9 @@ void queue_init( Queue* q){
      
 }
  
- void enqueue(Queue* q, uint8_t* data, uint32_t data_length){
+int enqueue(Queue* q, uint8_t* data, uint32_t data_length){
+     
+     if( q->size >= MAX_FRAME_IN_TELEMETRY_BUFFER ) return -1;
      
      Element* new = malloc(sizeof(Element));
      new -> data_length = data_length;
