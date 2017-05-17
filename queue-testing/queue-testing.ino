@@ -22,17 +22,18 @@ void setup() {
   uint8_t data1[5] = {5,6,7,8,9};
   uint8_t data2[6] = {10,11,12,13,14,15};
 
-  enqueue(queue, data0, 4);
-  enqueue(queue, data1, 5);
-  enqueue(queue, data2, 6);
+  
+  Serial.println(enqueue(queue, data0, 4));
+  Serial.println(enqueue(queue, data1, 5));
+  Serial.println(enqueue(queue, data2, 6));
   
   uint8_t* d0;
   uint8_t* d1;
   uint8_t* d2;
 
-  uint8_t d0_len;
-  uint8_t d1_len;
-  uint8_t d2_len;
+  uint32_t d0_len;
+  uint32_t d1_len;
+  uint32_t d2_len;
 
   int error;
 

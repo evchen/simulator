@@ -17,6 +17,7 @@
 // #define SEND_TM_OVR_CALLSIGN        0x11
 #define MAXIMUM_BUFFER_SIZE         235
 
+void generate_command(uint8_t* command_buffer, uint32_t* command_length, uint8_t command, uint8_t* parameter, uint8_t parameter_length );
 
 int SimTrxvu_tcSetDefToClSign	( unsigned char index,  unsigned char * fromCallsign, unsigned char *feedback );
 

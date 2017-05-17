@@ -1,5 +1,7 @@
 #include <stdlib.h>
 #include <inttypes.h>
+#include <stdio.h>
+
 #include "I2C.h"
 #include "I2C_configuration.h"
 #include "trxvu_sim_lib.h"
@@ -63,31 +65,33 @@ int SimTrxvu_tcSetDefToClSign	(	unsigned char index,  unsigned char * toCallsign
 
 
 
-int SimTrxvu_tcSendAX25DefClSign(unsigned char index, unsigned char * data, unsigned char length, unsigned char* avail){
+int SimTrxvu_tcSendAX25DefClSign(unsigned char index, unsigned char * data, unsigned char len, unsigned char* avail){
 
-    int error;              // storing error code    
+    int error = 0;              // storing error code    
     uint8_t command[255];   // storing the generated command according to trxvu document
     uint32_t command_length;
     
     
     // check length of the packet
-    if (length > MAXIMUM_BUFFER_SIZE)
+    if (len > MAXIMUM_BUFFER_SIZE)
         return PACKET_TOO_LARGE;
 
     
-    generate_command(command, &command_length, SEND_TM_DEF_CALLSIGN, data, length);
+    generate_command(command, &command_length, SEND_TM_DEF_CALLSIGN, data, len);
 
     // write command to prepare to send data
     
     error = I2C_write((uint32_t) index, command, command_length);
     if(error)
         return error;
-    
+   for (int c = 1 ; c <= 32767 ; c++ )
+       for (int d = 1 ; d <= 32767 ; d++ )
+       {}
+
     error = I2C_read((uint32_t) index, avail, 1);
     if(error)
         return error;
-
- 
+    
     return NO_ERROR;
     
     
