@@ -25,7 +25,7 @@ typedef struct _fifo_Q{
 }Queue;
 
 
-int queue_init(Queue* q);
+void queue_init(Queue* q);
 
 /*!
  * Dequeue the first Element of the Queue. 
@@ -47,7 +47,7 @@ int dequeue(Queue* q, uint8_t** data, uint32_t* data_length );
  * @param data_length length of the data that needs to be stored
  * @note this function will not always succeed. might encournter that there is nothing to dequeue
  */
-void enqueue(Queue* q, uint8_t* data, uint32_t data_length);
+int enqueue(Queue* q, uint8_t* data, uint32_t data_length);
 
 void getAvailableFrameCount(Queue* q, int* availableFrameCount);
 

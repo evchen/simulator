@@ -5,7 +5,7 @@
 #include "crc.h"
 
 
-void addCallsign(uint8_t *ax25_packet, uint32_t* ax25_packet_length, uint8_t* data, uint16_t data_length) {
+void addCallsign(uint8_t *ax25_packet, uint32_t* ax25_packet_length, uint8_t* data, uint32_t data_length) {
   
   uint32_t i;
   uint16_t chk;
@@ -60,7 +60,7 @@ void addData(uint8_t* array, uint32_t* offset, uint8_t data){
     
 }
 
-void addCallsign_withoutflag(uint8_t *ax25_packet, uint32_t* ax25_packet_length, uint8_t* data, uint16_t data_length) {
+uint8*_t addCallsign_withoutflag(uint32_t* ax25_packet_length, uint8_t* data, uint32_t data_length) {
 
   uint32_t i;
   uint32_t offset = 0;
@@ -68,6 +68,8 @@ void addCallsign_withoutflag(uint8_t *ax25_packet, uint32_t* ax25_packet_length,
 
   // calculating the length of ax25 packet
   *ax25_packet_length = data_length + 7 + 7 + 1 + 1  ;
+  
+  uint8_t* ax25_packet = (uint8_t*) malloc(sizeof(*ax25_packet_length));
   
   for (i = 0; i < CALLSIGN_LENGTH - 1 ; i ++ ){
         addData(ax25_packet, &offset, DEFAULT_CALLSIGN_TRXVU[i]<<1);

@@ -18,6 +18,6 @@
 /*
  * 
  */
-void process_command(uint8_t* command, uint32_t command_length, uint8_t* response, uint32_t* response_length);
+//void process_command(uint8_t* command, uint32_t command_length, uint8_t* response, uint32_t* response_length);
 
 #endif

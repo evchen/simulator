@@ -8,7 +8,7 @@
 #define DEFAULT_CALLSIGN_GS "MIST  "
 #define CALLSIGN_LENGTH 7 
 
-void addCallsign(uint8_t *ax25_packet, uint32_t* ax25_packet_length, uint8_t* data, uint16_t data_length);
-void addCallsign_withoutflag(uint8_t *ax25_packet, uint32_t* ax25_packet_length, uint8_t* data, uint16_t data_length); 
+void addCallsign(uint8_t *ax25_packet, uint32_t* ax25_packet_length, uint8_t* data, uint32_t data_length);
+uint8_t* addCallsign_withoutflag(uint32_t* ax25_packet_length, uint8_t* data, uint32_t data_length); 
 
 #endif
