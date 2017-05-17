@@ -43,26 +43,34 @@ void queue_init( Queue* q){
  
 int enqueue(Queue* q, uint8_t* data, uint32_t data_length){
      
-     if( q->size >= MAX_FRAME_IN_TELEMETRY_BUFFER ) return -1;
+	 int size = q -> size;
+     if( size >= MAX_FRAME_IN_TELEMETRY_BUFFER ) return -1;
      
      Element* new = malloc(sizeof(Element));
      new -> data_length = data_length;
      new -> data = data;
-     
-     if ( q -> size )
+	writeDebug(size);
+
+    /* 
+     if ( size > 0 )
      {
-        q-> tail -> next_element = new;
+		 writeDebug("there");
+        //q-> tail -> next_element = new;
      }
      else {
-         q ->head = new;
+		 	 writeDebug("here");
+         //q ->head = new;
      }
 
-     
+     /*
      q-> tail = new;
      
      q-> size ++;
+	 
+	 return MAX_FRAME_IN_TELEMETRY_BUFFER - (q->size);
 
-     
+     */
+	 return 5;
  }
  
  void getAvailableFrameCount(Queue* q, int* availableFrameCount){
