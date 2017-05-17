@@ -2,7 +2,6 @@
 #define _TRXVU_SIM_H
 
 #include <stdint.h>
-#include "fifo.h"
 
 #define SEND_TM_DEF_CALLSIGN 0x10 //sent telemetry using default callsign
 
@@ -19,6 +18,6 @@
 /*
  * 
  */
-void receiveI2Cmessage(uint8_t* data, uint32_t data_length);
+void process_command(uint8_t* command, uint32_t command_length, uint8_t* response, uint32_t* response_length);
 
 #endif

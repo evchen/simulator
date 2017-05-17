@@ -10,7 +10,7 @@ void setDefaultToCallsign(uint8_t* callsign, uint32_t length, uint8_t* response,
     
     
     *response_length = 7;
-    response = malloc(sizeof(7));
+//    response = malloc(sizeof(7));
     
     for(int i = 0 ; i < 7 ; i++){
         ToCallsign[i] = callsign[i];
@@ -29,7 +29,7 @@ void process_command(uint8_t* command, uint32_t command_length, uint8_t* respons
             setDefaultToCallsign(command+1, command_length-1, response, response_length);
             return;
         case SEND_TM_DEF_CALLSIGN :
-            sendTMdefCallsign();
+            //sendTMdefCallsign();
             return;
             
     }

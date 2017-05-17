@@ -1,7 +1,10 @@
+
+
 extern "C" {
   #include "debug2.h"
   #include "I2Cslave.h"
   #include "SlaveDefinitions.h"
+  #include "trxvu_sim.h"
  // #include <String.h>
 }
 
@@ -32,13 +35,19 @@ void loop() {
 
 char ascii_command[32];
 // Called when a message are received
+
+uint8_t response[255];
+uint32_t response_length;
+
 void receiveCallback (uint8_t *data, uint32_t dataLength) {
-  writeDebug("receiveCallback-------------------");
-  if (dataLength == 1) {
-    next_command = data[0];
-    writeDebug("setting next command to: ");
-    writeDebug(itoa(data[0], ascii_command, 10));
-    return;
+
+
+  
+  process_command(data, dataLength, response, &response_length);
+
+  
+  writeDebug((char*)data);
+  
 }
   /*
   // debugging
@@ -48,14 +57,19 @@ void receiveCallback (uint8_t *data, uint32_t dataLength) {
     itoa(data[i], debug + strlen(debug), 16);
   writeDebug(debug);
   */
- }
+ 
 
 // when OBC does a transmit request
 // decied what data to send to OBC
 // MSP packet. instert data and packet size. (no bigger than buff size)
 void transmitBeginCallback () {
-  currentPacket.MSP_packet[0] = 1;
-  currentPacket.packetSize = 1;
+  int i ;
+
+  for( i = 0 ; i < response_length ; i++){
+    
+    currentPacket.MSP_packet[i] = response[i];
+  }
+  currentPacket.packetSize = response_length;
   
 }
 
