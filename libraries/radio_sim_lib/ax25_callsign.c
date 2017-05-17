@@ -60,7 +60,7 @@ void addData(uint8_t* array, uint32_t* offset, uint8_t data){
     
 }
 
-uint8*_t addCallsign_withoutflag(uint32_t* ax25_packet_length, uint8_t* data, uint32_t data_length) {
+uint8_t* addCallsign_withoutflag(uint32_t* ax25_packet_length, uint8_t* data, uint32_t data_length) {
 
   uint32_t i;
   uint32_t offset = 0;
