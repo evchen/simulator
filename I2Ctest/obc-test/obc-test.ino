@@ -4,7 +4,7 @@
 extern "C"{
   #include "I2C.h"
   #include "I2C_configuration.h"
-
+  #include "trxvu_sim_lib.h"
  
 }
 
@@ -15,6 +15,7 @@ void printDebug(char* message, int number){
   Serial.println();
   Serial.flush();
 }
+
 
 void setup() {
   // put your setup code here, to run once:
@@ -33,7 +34,7 @@ void loop() {
   uint8_t send = 'A';
   
   error = I2C_write(0x08, &send, 1 );
-  
+  /*
   if(error){
     Serial.print("error");
   }
@@ -49,8 +50,8 @@ void loop() {
   else{
     printDebug("working, data: ", (int)data[0]);
   }
+  */
   
-  /*
   unsigned char feedback[7];
 
   unsigned char adrs = 8;
@@ -64,5 +65,6 @@ void loop() {
 
   char* message = (char*)feedback;
   Serial.print(message);
-  */
+  Serial.println();
+  
 }
